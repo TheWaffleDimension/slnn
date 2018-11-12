@@ -1,4 +1,5 @@
 local mx = require 'game/matrix/matrix'
+math.randomseed(os.time())
 local Library = {}
 
 Library.ActivationFunctions = {}
@@ -7,15 +8,8 @@ Library.UtilityFunctions = {}
 ---------------------------------------------------------------------
 -- All Auxiliar functions -------------------------------------------
 ---------------------------------------------------------------------
--- Activation function of the neuron
-Library.ActivationFunctions.sigmoid = function(x)
-    return 1 / (1 + math.exp(-x))
-end
--- Flat a number to 0 or 1
-Library.UtilityFunctions.flat = function(x)
-    if x < 0.5 then return 0
-    else return 1 end
-end
+Library.ActivationFunctions = require"./activation"
+Library.UtilityFunctions = require"./util"
 -- Neural Network foward propagation and flat the result
 local function Forward(model, input, activationFunc)
     -- The input is the distant to the center rigth of the gap of the pipe
