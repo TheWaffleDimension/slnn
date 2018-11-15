@@ -10,9 +10,7 @@ Library.UtilityFunctions = {}
 ---------------------------------------------------------------------
 Library.ActivationFunctions = require"./activation"
 Library.UtilityFunctions = require"./util"
--- Neural Network foward propagation and flat the result
 local function Forward(model, input, activationFunc)
-    -- The input is the distant to the center rigth of the gap of the pipe
     local result = mx{input}
     for i = 1, #model.Layers, 1 do
         result = mx.replace(mx.mul(result, model.hiddenLayers[i]), activationFunc)
